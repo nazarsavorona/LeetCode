@@ -1,0 +1,85 @@
+class Solution {
+public:
+    string intToRoman(int num) {
+        string result;
+        
+        int temp = num;
+       
+        int thousands = temp / 1000;
+        temp -= thousands * 1000;
+        
+        int hundreds = temp / 100;
+        temp -= hundreds * 100;
+        
+        int dozens = temp / 10;
+        temp -= dozens * 10;
+        
+        int digit = temp;
+        
+        while(thousands) {
+            result += "M";         
+            thousands--;
+        }
+        
+        while(hundreds) {
+            if(hundreds == 9) {
+                result += "CM";
+                break;
+            }            
+            else if(hundreds >= 5) {
+                result += "D";
+                hundreds -= 5;
+            }            
+            else if(hundreds == 4) {
+                result += "CD";
+                break;
+            }
+            else {            
+                result += "C";
+                hundreds--;
+            }
+        }
+        
+        while(dozens) {
+            if(dozens == 9) {
+                result += "XC";
+                break;
+            }            
+            else if(dozens >= 5) {
+                result += "L";
+                dozens -= 5;
+            }            
+            else if(dozens == 4) {
+                result += "XL";
+                break;
+            }
+            else {            
+                result += "X";
+                dozens--;
+            }
+        }
+        
+        while(digit) {
+                if(digit == 9) {
+                    result += "IX";
+                    break;
+                }            
+                else if(digit >= 5) {
+                    result += "V";
+                    digit -= 5;
+                }            
+                else if(digit == 4) {
+                    result += "IV";
+                    break;
+                }
+                else {            
+                    result += "I";
+                    digit--;
+                }
+            }
+      
+        return result;
+    }
+};
+
+

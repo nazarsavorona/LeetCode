@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int reverse(int x) {
+        string s = to_string(x);
+        bool isNegative = x < 0;
+        x = 0;
+        
+       for(int i = 0 + isNegative, n = s.size(); i < n; i++) {
+            long long toAdd = (s[i] - '0') * pow(10, i - isNegative);
+            if(INT_MAX - toAdd - x >= 0)
+                x += toAdd;
+            else
+                return 0;
+        }
+
+        if(isNegative)
+            x *= -1;
+
+        return x;        
+    }
+};
